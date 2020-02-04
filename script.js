@@ -20,7 +20,7 @@ function ajaxCall(params)
 
         // Affichage de l'information de chargement
 
-        document.getElementById('ajaxContent').innerHTML = "<div>Chargement en cour ...</div>";
+        document.getElementById('ajaxContent').innerHTML = "<div>Chargement en cours ...</div>";
 
         xhttp.onreadystatechange = function()
         {
@@ -44,9 +44,14 @@ function ajaxCall(params)
 
                         break;
                     case"affPurchased":
+                        for(var i in json)
+                        {
+                            var div = document.createElement('div');
+                            div.innerHTML = "<h1>"+json[i].buyer_name+"</h1>";
 
-                        //Votre code ici
+                            document.getElementById('ajaxContent').appendChild(div);
 
+                        }
                         break;
 
                     default:
@@ -63,10 +68,7 @@ function ajaxCall(params)
 
         xhttp.send();
 
-
-
         console.log("Sent an http request :"+url);
-
 
     }
 }
@@ -85,3 +87,14 @@ document.getElementById('affProducts').addEventListener('click', function()
 
 
 //Ajouter un event listener pour detecter le click sur le second lien
+
+document.getElementById('affPurchased').addEventListener('click', function()
+{
+    ajaxCall(
+        { 'url' : 'ajax.php',
+            'parameters' : [
+                {'action' : 'affPurchased'}
+            ]
+        }
+    )
+})

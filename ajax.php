@@ -9,7 +9,7 @@
 
 //Remplacer les valeurs si besoin
 
-$servername = "localhost"; $username = "root"; $password = ""; $dbname = "simon";
+$servername = "localhost"; $username = "root"; $password = ""; $dbname = "produits";
 
 $conn = new mysqli($servername, $username, $password);
 
@@ -20,14 +20,13 @@ if ($conn->connect_error) {
     $conn->select_db($dbname);
 
 
-
     switch($_GET['action'])
     {
         case"affProducts":
             $res = "select * from `products` where 1";
             break;
         case"affPurchased":
-            //Votre code ici
+            $res = "SELECT `buyer_name` FROM `products_purchased` WHERE 1";
             break;
     }
 
@@ -36,7 +35,6 @@ if ($conn->connect_error) {
 
         $arr = array();
         $result = $conn->query($res);
-
 
         while($data = $result->fetch_assoc())
         {

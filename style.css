@@ -1,15 +1,16 @@
 nav > span {
-    background: blue;
-    color: white;
+    background: #ff2f57;
+    color: #fffefe;
     margin-right: 15px;
     padding: 5px;
     cursor: pointer;
+    font-family: sans-serif;
 }
 
 .content > div {
     margin-bottom: 5px;
 
-    background: lightgrey;
+    background: #bad3cf;
     padding: 5px;
     margin-top: 15px;
     color: #0e0e0e;
